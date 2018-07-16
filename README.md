@@ -29,13 +29,13 @@ There must be enough gateways in a given area so the mesh can work.
  -  The member must be in a geographical zone where gateways are present
  -  There must exist a database where inserts are ciphered until a "cycle end", for instance every x seconds, the database sends a public update, with all the inserts in clear, but the inserts cannot be read before the end of the cycle: this allows a mechanism to avoid the fake gateways to read what the real ones sent and copy the messages to pretend they also received the lorawan messages. I think this is feasible if every inserter sends first a ciphered insert, and at the end of the cycle the key to uncipher: he cannot change afterwards the data he has just sent, and nobody can read his insert until he sent the key to uncipher.
 
- -  Step1: The device sends an auth request containing its ID and GPS coordinates via loraWAN.
- -  Step2: The gateways that receive the authrequest (they must be physically close, 10km max) request the authorisation to authentificate on the network.
- -  Step3: The network selects randomly 2 gateways and answer
- -  Step4: The selected gateways gather the public key associated with the ID to the network, cipher a randomly generated message and sends it to the device.
- -  Step5: The device uncipher each message with the user's private key and sends it back to the corresponding gateways
- -  Step6: The gateway verify that the received message matches, and if so sends a ACK to the network, with ID and GPS coordinates.
- -  Step7: The certification associated to the ID is renewed for some time (say 1 week) Another option is that the user associated with the ID receive some "reputation points"
+     -  Step1: The device sends an auth request containing its ID and GPS coordinates via loraWAN.
+     -  Step2: The gateways that receive the authrequest (they must be physically close, 10km max) request the authorisation to authentificate on the network.
+     -  Step3: The network selects randomly 2 gateways and answer
+     -  Step4: The selected gateways gather the public key associated with the ID to the network, cipher a randomly generated message and sends it to the device.
+     -  Step5: The device uncipher each message with the user's private key and sends it back to the corresponding gateways
+     -  Step6: The gateway verify that the received message matches, and if so sends a ACK to the network, with ID and GPS coordinates.
+     -  Step7: The certification associated to the ID is renewed for some time (say 1 week) Another option is that the user associated with the ID receive some "reputation points"
 
 **Why certify ?** 
 The certification bind a physical device (and so a physical person) to a virtual account, so the confidence is increased for applications like vote. It also allows to certify that the person is physically located in a geographical area, for law issues.
